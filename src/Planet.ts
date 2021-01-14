@@ -19,7 +19,7 @@ class Planet {
     size:number
     color:string|number
     speed:number
-
+    map:THREE.TextureLoader;
     constructor(params:PARAMS){
         this.size=params.size;
         this.color=params.color
@@ -39,7 +39,10 @@ class Planet {
         this.light=new THREE.PointLight()
         this.light.position.set(50,50,50)
         this.scene.add(this.light)
-        this.material = new THREE.MeshLambertMaterial({color:this.color});
+        this.material = new THREE.MeshLambertMaterial({
+            
+            map:new THREE.TextureLoader().load('../image/terre.jpg')
+        });
         this.sphere = new THREE.Mesh( this.geometry, this.material );
         this.scene.add( this.sphere )
         
