@@ -38331,6 +38331,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var THREE = require("three");
 var Planet = /** @class */ (function () {
     function Planet(params) {
+        this.name = params.name;
         this.size = params.size;
         this.color = params.color;
         this.speed = params.speed;
@@ -38349,7 +38350,7 @@ var Planet = /** @class */ (function () {
         this.light.position.set(50, 50, 50);
         this.scene.add(this.light);
         this.material = new THREE.MeshLambertMaterial({
-            map: new THREE.TextureLoader().load('../image/terre.jpg')
+            map: new THREE.TextureLoader().load('../image/' + this.name + '.jpg')
         });
         this.sphere = new THREE.Mesh(this.geometry, this.material);
         this.scene.add(this.sphere);
@@ -38391,10 +38392,12 @@ function init() {
     var size = Number(document.querySelector('h1').dataset.size);
     var color = document.querySelector('h1').dataset.color;
     var speed = Number(document.querySelector('h1').dataset.speed);
+    var name = document.querySelector('h1').dataset.name;
     new Planet_1.default({
         size: size,
         color: color,
         speed: speed,
+        name: name
     });
 }
 document.addEventListener('DOMContentLoaded', init);

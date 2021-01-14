@@ -4,6 +4,7 @@ import * as THREE from "three";
         size:number,
         color:string|number,
         speed:number,
+        name:string
 
 
     }
@@ -20,7 +21,9 @@ class Planet {
     color:string|number
     speed:number
     map:THREE.TextureLoader;
+    name:string
     constructor(params:PARAMS){
+        this.name=params.name
         this.size=params.size;
         this.color=params.color
         this.speed=params.speed
@@ -41,7 +44,7 @@ class Planet {
         this.scene.add(this.light)
         this.material = new THREE.MeshLambertMaterial({
             
-            map:new THREE.TextureLoader().load('../image/terre.jpg')
+            map:new THREE.TextureLoader().load('../image/'+this.name+'.jpg')
         });
         this.sphere = new THREE.Mesh( this.geometry, this.material );
         this.scene.add( this.sphere )
